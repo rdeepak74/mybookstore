@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 function Login() {
   const {
@@ -8,11 +9,32 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const onSubmit = (data) => console.log(data)
+  const navigate = useNavigate()
+  const onSubmit = async (data) => {
+    const userInfo = {
+      email: data.email,
+      password: data.password,
+    }
+    try {
+      const res = await axios.post('http://localhost:4001/user/login', userInfo)
+      if (res.data) {
+        alert('Login successfully')
+      }
+      localStorage.setItem('user', JSON.stringify(res.data.user))
+      document.getElementById('my_modal_3').close()
+      navigate('/')
+      window.location.reload()
+    } catch (error) {
+      console.error(error)
+      if (error.response) {
+        alert('Error: ' + error.response.data.message)
+      }
+    }
+  }
   return (
     <div>
       <dialog id="my_modal_3" className="modal">
-        <div className="modal-box">
+        <div className="modal-box  dark:bg-slate-800 dark:text-white">
           <form onSubmit={handleSubmit(onSubmit)} method="dialog">
             {/* if there is a button in form, it will close the modal */}
             <Link
@@ -24,11 +46,11 @@ function Login() {
             </Link>
 
             <h3 className="font-bold text-lg">Login</h3>
-            <div className="mt-4 space-y-3">
+            <div className="mt-4 space-y-3 ">
               <div>
                 <label className="flex ">Email</label>
                 <input
-                  className="border mt-1 outline-none px-2 py-1 rounded-md md:w-80
+                  className="border mt-1 outline-none px-2 py-1 rounded-md md:w-80 dark:bg-slate-900 dark:text-white
             "
                   type="email"
                   name="email"
@@ -46,7 +68,7 @@ function Login() {
               <div>
                 <label className="flex ">Password</label>
                 <input
-                  className="border mt-1 outline-none px-2 py-1 rounded-md md:w-80
+                  className="border mt-1 outline-none px-2 py-1 rounded-md md:w-80 dark:bg-slate-900 dark:text-white
             "
                   type="password"
                   name="password"

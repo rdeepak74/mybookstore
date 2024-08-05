@@ -6,9 +6,9 @@ function About() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex flex-col justify-center items-center space-y-4">
+      <div className="min-h-screen flex flex-col mt-28 md:mt-0 justify-center items-center space-y-4">
         <h1 className="text-2xl font-semibold">About</h1>
-        <p className="w-[80%]">
+        <p className="w-[80%]" style={{ marginBottom: '20px' }}>
           Welcome to <span>Shopy Book Store</span>, where the world of books
           comes alive. Established in 2024, our store is a haven for book
           enthusiasts and curious minds alike. We offer a thoughtfully curated

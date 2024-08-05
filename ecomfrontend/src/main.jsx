@@ -10,6 +10,7 @@ import {
 import Home from './home/Home.jsx'
 import Course from './course/Course.jsx'
 import Signup from './components/Signup.jsx'
+import AuthProvider from './context/AuthProvider.jsx'
 
 // const router = createBrowserRouter([
 //   {
@@ -35,7 +36,9 @@ import Signup from './components/Signup.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
   <BrowserRouter>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </BrowserRouter>
   // </React.StrictMode>
   // <React.StrictMode>

@@ -1,12 +1,28 @@
-import React from 'react'
-import list from '../../public/list.json'
+import React, { useEffect, useState } from 'react'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import Crads from './Crads'
+import axios from 'axios'
 
 function Freebook() {
-  const freeBookData = list.filter((data) => data.category === 'Free')
+  // const freeBookData = list.filter((data) => data.category === 'Free')
+
+  const [freeBookData, setFreeBookData] = useState([])
+
+  useEffect(() => {
+    const getlist = async () => {
+      try {
+        const res = await axios.get('http://localhost:4001/book')
+        // console.log(res.data)
+        const filtdata = res.data.filter((data) => data.category === 'Free')
+        setFreeBookData(filtdata)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getlist()
+  }, [])
   var settings = {
     dots: true,
     infinite: false,

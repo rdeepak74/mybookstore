@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Crads from './Crads'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
-function Courselist({ list }) {
+function Courselist() {
+  const [list, setList] = useState([])
+
+  useEffect(() => {
+    const getlist = async () => {
+      try {
+        const res = await axios.get('http://localhost:4001/book')
+        // console.log(res.data)
+        setList(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getlist()
+  }, [])
+
   return (
     <div className="min-h-screen">
       <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 ">

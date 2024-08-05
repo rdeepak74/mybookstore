@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import Login from './Login'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 function Signup() {
   const {
@@ -9,12 +10,37 @@ function Signup() {
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const onSubmit = (data) => console.log(data)
+
+  const navigate = useNavigate()
+  const onSubmit = async (data) => {
+    const userInfo = {
+      fullname: data.fullname,
+      email: data.email,
+      password: data.password,
+    }
+    try {
+      const res = await axios.post(
+        'http://localhost:4001/user/signup',
+        userInfo
+      )
+      console.log(res.data)
+      if (res.data) {
+        alert('Signup Success')
+      }
+      localStorage.setItem('user', JSON.stringify(res.data.user))
+      navigate('/')
+    } catch (error) {
+      if (error.response) {
+        // console.log(error.response.data)
+        alert('Error: ' + error.response.data.message)
+      }
+    }
+  }
 
   return (
     <div>
       <div className="min-h-screen flex justify-center items-center">
-        <div className="modal-box">
+        <div className="modal-box  dark:bg-slate-800 dark:text-white">
           <form onSubmit={handleSubmit(onSubmit)}>
             <Link to="/">
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
@@ -26,27 +52,27 @@ function Signup() {
               <div>
                 <label className="flex ">Name</label>
                 <input
-                  className="border mt-1 outline-none px-2 py-1 rounded-md md:w-80
+                  className="border mt-1 outline-none px-2 py-1 rounded-md md:w-80 dark:bg-slate-900 dark:text-white
         "
                   type="text"
-                  name="username"
-                  id="username"
+                  name="fullname"
+                  id="fullname"
                   placeholder="Enter your full name"
-                  {...register('username', {
-                    required: 'Username is required',
+                  {...register('fullname', {
+                    required: 'fullname is required',
                   })}
                 />
                 <br />
-                {errors.username && (
+                {errors.fullname && (
                   <span className="text-sm text-red-500">
-                    {errors.username.message}
+                    {errors.fullname.message}
                   </span>
                 )}
               </div>
               <div>
                 <label className="flex ">Email</label>
                 <input
-                  className="border mt-1 outline-none px-2 py-1 rounded-md md:w-80
+                  className="border mt-1 outline-none px-2 py-1 rounded-md md:w-80 dark:bg-slate-900 dark:text-white
         "
                   type="email"
                   name="email"
@@ -64,7 +90,7 @@ function Signup() {
               <div>
                 <label className="flex ">Password</label>
                 <input
-                  className="border mt-1 outline-none px-2 py-1 rounded-md md:w-80
+                  className="border mt-1 outline-none px-2 py-1 rounded-md md:w-80 dark:bg-slate-900 dark:text-white
         "
                   type="password"
                   name="password"
