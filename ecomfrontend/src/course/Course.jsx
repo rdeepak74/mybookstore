@@ -7,9 +7,9 @@ function Course() {
   const bookslist = list
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Courselist list={list} />
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

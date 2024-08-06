@@ -6,12 +6,14 @@ import Signup from './components/Signup'
 import Contactus from './components/Contactus'
 import About from './components/About'
 import { useAuth } from './context/AuthProvider'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 function App() {
   const [authUser, setAuthUser] = useAuth()
   return (
     <>
-      <div className="dark:bg-slate-800 dark:text-white">
+      {/* <div className="dark:bg-slate-800 dark:text-white">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
@@ -22,12 +24,12 @@ function App() {
           <Route path="/contact-us" element={<Contactus />} />
           <Route path="/about" element={<About />} />
         </Routes>
-      </div>
-      {/* <Navbar />
+      </div> */}
+      <Navbar />
       <div className="dark:bg-slate-800 dark:text-white">
         <Outlet />
       </div>
-      <Footer /> */}
+      <Footer />
     </>
   )
 }

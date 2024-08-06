@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { useAuth } from '../context/AuthProvider'
 
 function Login() {
   const {
@@ -10,6 +11,7 @@ function Login() {
     formState: { errors },
   } = useForm()
   const navigate = useNavigate()
+  const [authUser, setAuthUser] = useAuth()
   const onSubmit = async (data) => {
     const userInfo = {
       email: data.email,
@@ -21,9 +23,8 @@ function Login() {
         alert('Login successfully')
       }
       localStorage.setItem('user', JSON.stringify(res.data.user))
-      document.getElementById('my_modal_3').close()
+      setAuthUser(res.data.user)
       navigate('/')
-      window.location.reload()
     } catch (error) {
       console.error(error)
       if (error.response) {
@@ -33,17 +34,17 @@ function Login() {
   }
   return (
     <div>
-      <dialog id="my_modal_3" className="modal">
+      <div className="min-h-screen flex justify-center items-center">
         <div className="modal-box  dark:bg-slate-800 dark:text-white">
           <form onSubmit={handleSubmit(onSubmit)} method="dialog">
             {/* if there is a button in form, it will close the modal */}
-            <Link
+            {/* <Link
               to="/"
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
               onClick={() => document.getElementById('my_modal_3').close()}
             >
               ✕
-            </Link>
+            </Link> */}
 
             <h3 className="font-bold text-lg">Login</h3>
             <div className="mt-4 space-y-3 ">
@@ -109,7 +110,7 @@ function Login() {
             </div>
           </form>
         </div>
-      </dialog>
+      </div>
     </div>
   )
 }

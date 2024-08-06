@@ -1,15 +1,18 @@
 import React from 'react'
 import { useAuth } from '../context/AuthProvider'
+import { useNavigate } from 'react-router-dom'
 
 function Logout() {
   const [authUser, setAuthUser] = useAuth()
-
+  const navigate = useNavigate()
   const handleLogout = () => {
     try {
-      setAuthUser((prev) => ({ ...prev, user: null }))
       alert('Logout succesfully')
       localStorage.removeItem('user')
-      window.location.reload()
+      // setAuthUser((prev) => ({ ...prev, user: null }))
+      setAuthUser(null)
+      navigate('/')
+      // window.location.reload()
     } catch (error) {
       alert('Error Logout' + error)
     }

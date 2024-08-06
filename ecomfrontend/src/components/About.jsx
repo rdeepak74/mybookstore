@@ -5,7 +5,7 @@ import Footer from './Footer'
 function About() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="min-h-screen flex flex-col mt-28 md:mt-0 justify-center items-center space-y-4">
         <h1 className="text-2xl font-semibold">About</h1>
         <p className="w-[80%]" style={{ marginBottom: '20px' }}>
@@ -26,7 +26,7 @@ function About() {
           www.shopystore.com. We look forward to welcoming you!
         </p>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

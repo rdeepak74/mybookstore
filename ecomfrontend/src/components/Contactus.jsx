@@ -5,7 +5,7 @@ import Navbar from './Navbar'
 function Contactus() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="min-h-screen flex justify-center items-center">
         <div className="">
           <h1 className="text-xl font-semibold">Contact Us</h1>
@@ -54,7 +54,7 @@ function Contactus() {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

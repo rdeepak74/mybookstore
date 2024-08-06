@@ -42,11 +42,11 @@ function Signup() {
       <div className="min-h-screen flex justify-center items-center">
         <div className="modal-box  dark:bg-slate-800 dark:text-white">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Link to="/">
+            {/* <Link to="/">
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                 ✕
               </button>
-            </Link>
+            </Link> */}
             <h3 className="font-bold text-lg">SignUp</h3>
             <div className="mt-4 space-y-3">
               <div>
@@ -123,15 +123,11 @@ function Signup() {
 
                 <p className="mt-2 md:mt-0">
                   Have account?{' '}
-                  <button
-                    className="text-blue-400 hover:underline"
-                    onClick={() =>
-                      document.getElementById('my_modal_3').showModal()
-                    }
-                  >
-                    Login
-                  </button>{' '}
-                  <Login />
+                  <Link to="/login">
+                    <button className="text-blue-400 hover:underline">
+                      Login
+                    </button>
+                  </Link>
                 </p>
               </div>
             </div>
