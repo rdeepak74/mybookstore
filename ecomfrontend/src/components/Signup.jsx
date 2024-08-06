@@ -102,14 +102,14 @@ function Signup() {
                   type="password"
                   name="password"
                   id="password"
-                  placeholder="Enter your email"
+                  placeholder="Enter your password"
                   {...register('password', {
                     required: 'Password is required',
                     pattern: {
                       value:
                         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/,
                       message:
-                        'Password must include upper, lower, number, and special character',
+                        'Password must include upper, lower, number, and special character and atleat 8 character required',
                     },
                   })}
                 />
