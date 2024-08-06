@@ -9,7 +9,7 @@ function Courselist() {
   useEffect(() => {
     const getlist = async () => {
       try {
-        const res = await axios.get('http://localhost:4001/book')
+        const res = await axios.get('https://mybookstore-jade.vercel.app/book')
         // console.log(res.data)
         setList(res.data)
       } catch (error) {

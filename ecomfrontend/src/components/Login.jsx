@@ -18,7 +18,10 @@ function Login() {
       password: data.password,
     }
     try {
-      const res = await axios.post('http://localhost:4001/user/login', userInfo)
+      const res = await axios.post(
+        'https://mybookstore-jade.vercel.app/user/login',
+        userInfo
+      )
       if (res.data) {
         // alert('Login successfully')
         toast.success('Loggedin Successfully')
