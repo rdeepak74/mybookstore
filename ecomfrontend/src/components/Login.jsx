@@ -78,7 +78,7 @@ function Login() {
                   type="password"
                   name="password"
                   id="password"
-                  placeholder="Enter your email"
+                  placeholder="Enter your password"
                   {...register('password', {
                     required: 'Password is required',
                     pattern: {
