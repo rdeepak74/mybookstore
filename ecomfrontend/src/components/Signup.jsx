@@ -3,6 +3,8 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import Login from './Login'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { useAuth } from '../context/AuthProvider'
+import toast from 'react-hot-toast'
 
 function Signup() {
   const {
@@ -10,7 +12,7 @@ function Signup() {
     handleSubmit,
     formState: { errors },
   } = useForm()
-
+  const [authUser, setAuthUser] = useAuth()
   const navigate = useNavigate()
   const onSubmit = async (data) => {
     const userInfo = {
@@ -25,14 +27,19 @@ function Signup() {
       )
       console.log(res.data)
       if (res.data) {
-        alert('Signup Success')
+        // alert('Signup Success')
+        toast.success('Signup Successfully')
       }
-      localStorage.setItem('user', JSON.stringify(res.data.user))
-      navigate('/')
+      setTimeout(() => {
+        localStorage.setItem('user', JSON.stringify(res.data.user))
+        setAuthUser(res.data.user)
+        navigate('/')
+      }, 1000)
     } catch (error) {
       if (error.response) {
         // console.log(error.response.data)
-        alert('Error: ' + error.response.data.message)
+        // alert('Error: ' + error.response.data.message)
+        toast.error('Error: ' + error.response.data.message)
       }
     }
   }

@@ -8,6 +8,7 @@ import About from './components/About'
 import { useAuth } from './context/AuthProvider'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   const [authUser, setAuthUser] = useAuth()
@@ -30,6 +31,7 @@ function App() {
         <Outlet />
       </div>
       <Footer />
+      <Toaster />
     </>
   )
 }

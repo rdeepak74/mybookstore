@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { useAuth } from '../context/AuthProvider'
-
+import toast from 'react-hot-toast'
 function Login() {
   const {
     register,
@@ -20,15 +20,19 @@ function Login() {
     try {
       const res = await axios.post('http://localhost:4001/user/login', userInfo)
       if (res.data) {
-        alert('Login successfully')
+        // alert('Login successfully')
+        toast.success('Loggedin Successfully')
       }
-      localStorage.setItem('user', JSON.stringify(res.data.user))
-      setAuthUser(res.data.user)
-      navigate('/')
+      setTimeout(() => {
+        localStorage.setItem('user', JSON.stringify(res.data.user))
+        setAuthUser(res.data.user)
+        navigate('/')
+      }, 1000)
     } catch (error) {
       console.error(error)
       if (error.response) {
-        alert('Error: ' + error.response.data.message)
+        // alert('Error: ' + error.response.data.message)
+        toast.error('Error: ' + error.response.data.message)
       }
     }
   }

@@ -1,20 +1,26 @@
 import React from 'react'
 import { useAuth } from '../context/AuthProvider'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 function Logout() {
   const [authUser, setAuthUser] = useAuth()
   const navigate = useNavigate()
   const handleLogout = () => {
     try {
-      alert('Logout succesfully')
-      localStorage.removeItem('user')
-      // setAuthUser((prev) => ({ ...prev, user: null }))
-      setAuthUser(null)
-      navigate('/')
+      // alert('Logout succesfully')
+      toast.success('Logout Successfully')
+      setTimeout(() => {
+        localStorage.removeItem('user')
+        // setAuthUser((prev) => ({ ...prev, user: null }))
+        setAuthUser(null)
+        navigate('/')
+      }, 1000)
+
       // window.location.reload()
     } catch (error) {
-      alert('Error Logout' + error)
+      // alert('Error Logout' + error)
+      toast.error('Error Logout: ' + error)
     }
   }
   return (

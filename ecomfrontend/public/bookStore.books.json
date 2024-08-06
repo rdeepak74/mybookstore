@@ -1,0 +1,77 @@
+[{
+  "_id": {
+    "$oid": "66b069ae6ad6d139936eaf6b"
+  },
+  "id": 1,
+  "name": "Book 1",
+  "title": "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+  "price": 0,
+  "category": "Free",
+  "image": "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?t=st=1722679592~exp=1722683192~hmac=6feb01739d463ea692c4230cfd71023ca58edc7ee648839d1c1bb88045bb0d14&w=900"
+},
+{
+  "_id": {
+    "$oid": "66b069ae6ad6d139936eaf6c"
+  },
+  "id": 2,
+  "name": "Book 2 Test",
+  "title": "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+  "price": 0,
+  "category": "Free",
+  "image": "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?t=st=1722679592~exp=1722683192~hmac=6feb01739d463ea692c4230cfd71023ca58edc7ee648839d1c1bb88045bb0d14&w=900"
+},
+{
+  "_id": {
+    "$oid": "66b069ae6ad6d139936eaf6d"
+  },
+  "id": 3,
+  "name": "Book 3",
+  "title": "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+  "price": 0,
+  "category": "Free",
+  "image": "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?t=st=1722679592~exp=1722683192~hmac=6feb01739d463ea692c4230cfd71023ca58edc7ee648839d1c1bb88045bb0d14&w=900"
+},
+{
+  "_id": {
+    "$oid": "66b069ae6ad6d139936eaf6e"
+  },
+  "id": 4,
+  "name": "Book 4",
+  "title": "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+  "price": 0,
+  "category": "Free",
+  "image": "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?t=st=1722679592~exp=1722683192~hmac=6feb01739d463ea692c4230cfd71023ca58edc7ee648839d1c1bb88045bb0d14&w=900"
+},
+{
+  "_id": {
+    "$oid": "66b069ae6ad6d139936eaf6f"
+  },
+  "id": 5,
+  "name": "Sport Book",
+  "title": "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+  "price": 100,
+  "category": "Sport",
+  "image": "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?t=st=1722679592~exp=1722683192~hmac=6feb01739d463ea692c4230cfd71023ca58edc7ee648839d1c1bb88045bb0d14&w=900"
+},
+{
+  "_id": {
+    "$oid": "66b069ae6ad6d139936eaf70"
+  },
+  "id": 6,
+  "name": "Commedy",
+  "title": "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+  "price": 51,
+  "category": "Commedy",
+  "image": "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?t=st=1722679592~exp=1722683192~hmac=6feb01739d463ea692c4230cfd71023ca58edc7ee648839d1c1bb88045bb0d14&w=900"
+},
+{
+  "_id": {
+    "$oid": "66b069ae6ad6d139936eaf71"
+  },
+  "id": 7,
+  "name": "Life Book",
+  "title": "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+  "price": 79,
+  "category": "Life",
+  "image": "https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?t=st=1722679592~exp=1722683192~hmac=6feb01739d463ea692c4230cfd71023ca58edc7ee648839d1c1bb88045bb0d14&w=900"
+}]
