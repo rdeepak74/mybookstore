@@ -108,7 +108,7 @@ function Navbar() {
               </ul>
             </div>
             <Link to="/" className=" text-2xl font-bold cursor-pointer">
-              bookStore
+              Shoopy Book Store
             </Link>
           </div>
           <div className="navbar-end space-x-3">
