@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { useAuth } from '../context/AuthProvider'
 import toast from 'react-hot-toast'
-import baseURL from '../config/config'
+import baseURL from '../config/config' // common url use
 function Login() {
   const {
     register,
