@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { useAuth } from '../context/AuthProvider'
 import toast from 'react-hot-toast'
+import baseURL from '../config/config'
 function Login() {
   const {
     register,
@@ -18,10 +19,7 @@ function Login() {
       password: data.password,
     }
     try {
-      const res = await axios.post(
-        'https://mybookstore-jade.vercel.app/user/login',
-        userInfo
-      )
+      const res = await axios.post(`${baseURL}/user/login`, userInfo)
       if (res.data) {
         // alert('Login successfully')
         toast.success('Loggedin Successfully')
@@ -105,6 +103,13 @@ function Login() {
                   id="login"
                 >
                   Login
+                </button>
+
+                <button
+                  className="bg-red-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200"
+                  id="login"
+                >
+                  Google Sign In
                 </button>
 
                 <p className="mt-2 md:mt-0">

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { useAuth } from '../context/AuthProvider'
 import toast from 'react-hot-toast'
-
+import baseURL from '../config/config'
 function Signup() {
   const {
     register,
@@ -21,10 +21,7 @@ function Signup() {
       password: data.password,
     }
     try {
-      const res = await axios.post(
-        'https://mybookstore-jade.vercel.app/user/signup',
-        userInfo
-      )
+      const res = await axios.post(`${baseURL}/user/signup`, userInfo)
       console.log(res.data)
       if (res.data) {
         // alert('Signup Success')
