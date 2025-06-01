@@ -15,6 +15,8 @@ import AuthProvider, { useAuth } from './context/AuthProvider.jsx'
 import Contactus from './components/Contactus.jsx'
 import About from './components/About.jsx'
 import Login from './components/Login.jsx'
+import PageNotFound from './components/PageNotFound.jsx'
+import { GoogleOAuthProvider } from '@react-oauth/google'
 // const [authUser, setAuthUser] = useAuth()
 // const router = createBrowserRouter([
 //   {
@@ -51,7 +53,13 @@ import Login from './components/Login.jsx'
 
 function AppRoutes() {
   const [authUser] = useAuth() // Use useAuth hook inside a functional component
-
+  const GoogleAuthWrrapper = () => {
+    return (
+      <GoogleOAuthProvider clientId="83373810468-3ue0q3jban7c4qh1gh0nik512q31coke.apps.googleusercontent.com">
+        <Login />
+      </GoogleOAuthProvider>
+    )
+  }
   const router = createBrowserRouter([
     {
       path: '/',
@@ -75,11 +83,15 @@ function AppRoutes() {
         },
         {
           path: '/login',
-          element: <Login />,
+          element: <GoogleAuthWrrapper />,
         },
         {
           path: '/signup',
           element: <Signup />,
+        },
+        {
+          path: '*',
+          element: <PageNotFound />,
         },
       ],
     },

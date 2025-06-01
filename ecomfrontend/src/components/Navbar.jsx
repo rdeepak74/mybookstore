@@ -9,7 +9,7 @@ function Navbar() {
     localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light'
   )
   const [authUser, setAuthUser] = useAuth()
-  console.log(authUser)
+  // console.log(authUser)
   const element = document.documentElement
   useEffect(() => {
     if (theme === 'dark') {
@@ -107,8 +107,8 @@ function Navbar() {
                 {navItem}
               </ul>
             </div>
-            <Link to="/" className=" text-2xl font-bold cursor-pointer">
-              Shoopy Book Store
+            <Link to="/" className="   text-2xl font-bold cursor-pointer">
+              Book Store
             </Link>
           </div>
           <div className="navbar-end space-x-3">

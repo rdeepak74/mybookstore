@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useAuth } from '../context/AuthProvider'
 import toast from 'react-hot-toast'
 import baseURL from '../config/config' // common url use
+import { useGoogleLogin } from '@react-oauth/google'
 function Login() {
   const {
     register,
@@ -13,6 +14,25 @@ function Login() {
   } = useForm()
   const navigate = useNavigate()
   const [authUser, setAuthUser] = useAuth()
+
+  const responseGoogle = async (authResult) => {
+    try {
+      if (authResult['code']) {
+        const res = await axios.get(
+          `${baseURL}/user/google?code=${authResult['code']}`
+        )
+        console.log(authResult)
+      }
+    } catch (error) {
+      console.log('Error while requesting googe code:', error)
+    }
+  }
+  const googleLogin = useGoogleLogin({
+    onSuccess: responseGoogle,
+    onError: responseGoogle,
+    flow: 'auth-code',
+  })
+
   const onSubmit = async (data) => {
     const userInfo = {
       email: data.email,
@@ -105,12 +125,13 @@ function Login() {
                   Login
                 </button>
 
-                <button
+                {/* <button
                   className="bg-red-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200"
-                  id="login"
+                  id="googlelogin"
+                  onClick={googleLogin}
                 >
-                  Google Sign In
-                </button>
+                  Login with google
+                </button> */}
 
                 <p className="mt-2 md:mt-0">
                   Not registered?{' '}

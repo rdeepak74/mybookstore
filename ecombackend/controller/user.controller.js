@@ -58,3 +58,5 @@ export const login = async (req, res) => {
     })
   }
 }
+
+export const google = async (req, res) => {}
