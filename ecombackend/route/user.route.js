@@ -1,6 +1,7 @@
 import express from "express";
 import { google, login, signup } from "../controller/user.controller.js";
 import passport from "passport";
+import { envConfig } from "../utils/url.js";
 const router = express.Router();
 
 router.post("/signup", signup);
@@ -24,12 +25,12 @@ router.get(
 router.get("/google/callback", (req, res, next) => {
   passport.authenticate("google", async (err, user, info) => {
     if (err || !user) {
-      return res.redirect("http://localhost:5173/login");
+      return res.redirect(`${envConfig.FRONTEND_BASE_URL}/login"`);
     }
 
     req.logIn(user, (err) => {
       if (err) {
-        return res.redirect("http://localhost:5173/login");
+        return res.redirect(`${envConfig.FRONTEND_BASE_URL}/login`);
       }
 
       // ✅ Optional: Generate token if you're using JWT
@@ -37,7 +38,9 @@ router.get("/google/callback", (req, res, next) => {
 
       // ✅ Redirect to frontend with token or user ID in query string
       return res.redirect(
-        `http://localhost:5173?user=${encodeURIComponent(JSON.stringify(user))}`
+        `${envConfig.FRONTEND_BASE_URL}?user=${encodeURIComponent(
+          JSON.stringify(user)
+        )}`
       );
 
       // OR send token: return res.redirect(`http://localhost:5173?token=${token}`);

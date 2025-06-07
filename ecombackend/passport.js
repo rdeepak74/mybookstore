@@ -1,6 +1,7 @@
 // import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import User from "./model/user.model.js";
+import { envConfig } from "./utils/url.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -11,7 +12,7 @@ export default function configurePassport(passport) {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: `http://localhost:4001/user/google/callback`,
+        callbackURL: `${envConfig.BACKEND_BASE_URL}/user/google/callback`,
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
