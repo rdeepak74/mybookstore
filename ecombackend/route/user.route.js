@@ -35,11 +35,11 @@ router.get("/google/callback", (req, res, next) => {
 
       // ✅ Optional: Generate token if you're using JWT
       // const token = generateToken(user);
-
+      const { googleId, ...data } = user;
       // ✅ Redirect to frontend with token or user ID in query string
       return res.redirect(
         `${envConfig.FRONTEND_BASE_URL}?user=${encodeURIComponent(
-          JSON.stringify(user)
+          JSON.stringify(data)
         )}`
       );
 
