@@ -14,24 +14,6 @@ function Login() {
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useAuth();
 
-  const responseGoogle = async (authResult) => {
-    try {
-      if (authResult["code"]) {
-        const res = await axios.get(
-          `${baseURL}/user/google?code=${authResult["code"]}`
-        );
-        console.log(authResult);
-      }
-    } catch (error) {
-      console.log("Error while requesting googe code:", error);
-    }
-  };
-  // const googleLogin = useGoogleLogin({
-  //   onSuccess: responseGoogle,
-  //   onError: responseGoogle,
-  //   flow: "auth-code",
-  // });
-
   const onSubmit = async (data) => {
     const userInfo = {
       email: data.email,
@@ -58,24 +40,8 @@ function Login() {
   };
 
   const loginWithGoogle = async () => {
-    window.location.href = "http://localhost:4001/user/google";
+    window.location.href = `${baseURL}/user/google`;
   };
-
-  useEffect(() => {
-    const handleMessage = (event) => {
-      if (event.origin !== "http://localhost:4001") return;
-
-      const user = event.data;
-      console.log("User from Google Login:", user);
-
-      localStorage.setItem("user", JSON.stringify(user));
-      // Redirect if needed
-      // window.location.href = "/dashboard";
-    };
-
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
-  }, []);
 
   return (
     <div>

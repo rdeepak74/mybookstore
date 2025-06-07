@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import Crads from './Crads'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-
+import React, { useEffect, useState } from "react";
+import Crads from "./Crads";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import baseURL from "../config/config"; // common url use
 function Courselist() {
-  const [list, setList] = useState([])
+  const [list, setList] = useState([]);
 
   useEffect(() => {
     const getlist = async () => {
       try {
-        const res = await axios.get('https://mybookstore-jade.vercel.app/book')
+        const res = await axios.get(`${baseURL}/book`);
         // console.log(res.data)
-        setList(res.data)
+        setList(res.data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    getlist()
-  }, [])
+    };
+    getlist();
+  }, []);
 
   return (
     <div className="min-h-screen">
       <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 ">
         <div className="pt-28 items-center justify-center text-center">
           <h1 className="text-2xl  md:text-4xl">
-            We're delighted to have youd{' '}
+            We're delighted to have youd{" "}
             <span className="text-pink-500"> Here! :)</span>
           </h1>
           <p className="mt-12">
@@ -53,7 +53,7 @@ function Courselist() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Courselist
+export default Courselist;
